@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Livewire\HomeComponent;
+use App\Http\Livewire\empleadoComponent;
+use App\Http\Livewire\RegistroEmpleadoComponent;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +16,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::get('/', HomeComponent::class)->name('home.index');
+Route::get('/empleado', empleadoComponent::class)->name('empleado');
+
+
+Route::get('/registo_empleado', RegistroEmpleadoComponent::class)->name('registro_empleado');
