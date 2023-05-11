@@ -241,11 +241,13 @@
                                             </td>
                                             <td
                                                 class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                                <a href="/"
+
+                                                <a href="{{ route('editar_empleado', ['empleado_id' => $empleado->id]) }}"
                                                     class="font-bold leading-tight text-xs text-slate-500">Editar
                                                 </a>
-                                                <a href="javascript:;"
-                                                    class="font-bold leading-tight text-xs text-slate-500">Eliminar
+
+                                                <a href="#"
+                                                    class="font-bold leading-tight text-xs text-slate-500">   Eliminar
                                                 </a>
                                             </td>
                                         </tr>

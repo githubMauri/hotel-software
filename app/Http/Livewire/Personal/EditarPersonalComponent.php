@@ -5,8 +5,9 @@ namespace App\Http\Livewire\Personal;
 use App\Models\empleado;
 use Livewire\Component;
 
-class RegistroEmpleadoComponent extends Component
+class EditarPersonalComponent extends Component
 {
+    public $empleado_id;
     public $nombre;
     public $apellido_paterno;
     public $apellido_materno;
@@ -15,6 +16,20 @@ class RegistroEmpleadoComponent extends Component
     public $telefono;
     public $direccion;
     public $sueldo;
+
+    public function mount($empleado_id)
+    {
+        $empleado = empleado::find($empleado_id);
+        $this->empleado_id =$empleado->id;
+        $this->nombre =$empleado->nombre;
+        $this->apellido_paterno =$empleado->apellido_paterno;
+        $this->apellido_materno =$empleado->apellido_materno;
+        $this->email =$empleado->email;
+        $this->CI =$empleado->CI;
+        $this->telefono =$empleado->telefono;
+        $this->direccion =$empleado->direccion;
+        $this->sueldo =$empleado->sueldo;
+    }
 
     public function updated($fields)
     {
@@ -30,7 +45,8 @@ class RegistroEmpleadoComponent extends Component
         ]);
     }
 
-    public function storeEmpleado(){
+    
+    public function updateEmpleado(){
 
         $this->validate( [
             'nombre' => 'required',
@@ -42,7 +58,7 @@ class RegistroEmpleadoComponent extends Component
             'sueldo' => 'required'
         ]);
 
-        $empleado=new empleado();
+        $empleado=empleado::find($this->empleado_id);
         $empleado->nombre=$this->nombre;
         $empleado->apellido_paterno=$this->apellido_paterno;
         $empleado->apellido_materno=$this->apellido_materno;
@@ -52,12 +68,12 @@ class RegistroEmpleadoComponent extends Component
         $empleado->direccion=$this->direccion;
         $empleado->sueldo=$this->sueldo;
         $empleado->save();
-        session()->flash('message', 'Nuevo Personal registrado!');
+        session()->flash('message', 'Actualizacion Exitosa');
 
     }
 
     public function render()
     {
-        return view('livewire.personal.registro-empleado-component');
+        return view('livewire.personal.editar-personal-component');
     }
 }

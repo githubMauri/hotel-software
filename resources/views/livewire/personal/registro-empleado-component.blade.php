@@ -154,131 +154,185 @@
                         <div
                             class="relative flex flex-col min-w-0 mb-6 break-words bg-white border-0
                             border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
-                            {{-- @if (Session::has('message'))
-                                <div class="alert alert-success" role="alert">{{ Session::get('message') }}</div>
-                            @endif --}}
-                            <div class="flex-auto p-6" wire:submit.prevent="storeEmpleado">
 
-                                <p class="leading-normal uppercase dark:text-white dark:opacity-60 text-sm">Datos del
-                                    Usuario</p>
-                                <div class="flex flex-wrap -mx-3">
-                                    <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
-                                        <div class="mb-4">
-                                            <label for="nombre"
-                                                class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Nombre</label>
-                                            <input type="text" name="nombre" value="lucky.jesse"
-                                                class="focus:shadow-primary-outline  text-sm 
+                            @if (Session::has('message'))
+                                <div class="alert alert-success font-bold py-6 leading-tight text-left text-slate-500" role="alert">{{ Session::get('message') }}</div>
+                            @endif
+
+                            <div class="flex-auto p-6">
+                                <form wire:submit.prevent="storeEmpleado">
+                                    <p class="leading-normal uppercase dark:text-white dark:opacity-60 text-sm">Datos
+                                        del Usuario</p>
+                                    <div class="flex flex-wrap -mx-3">
+                                        <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
+                                            <div class="mb-4">
+                                                <label for="nombre"
+                                                    class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Nombre</label>
+                                                <input type="text" name="nombre" value="lucky.jesse"
+                                                    class="focus:shadow-primary-outline  text-sm 
                                                 leading-5.6 ease block w-full appearance-none rounded-lg border border-solid 
                                                 border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 
                                                 outline-none transition-all  focus:border-fuchsia-300 
-                                                focus:outline-none focus:transition-shadow" wire:model="nombre" />
+                                                focus:outline-none focus:transition-shadow"
+                                                    wire:model="nombre" />
+
+                                                @error('nombre')
+                                                    <p class="text-danger">{{ $message }}</p>
+                                                @enderror
+
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
-                                        <div class="mb-4">
-                                            <label for="email"
-                                                class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Correo
-                                                Electronico</label>
-                                            <input type="email" name="email" value="jesse@example.com"
-                                                class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full 
+                                        <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
+                                            <div class="mb-4">
+                                                <label for="email"
+                                                    class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Correo
+                                                    Electronico</label>
+                                                <input type="email" name="email" value="jesse@example.com"
+                                                    class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full 
                                                 appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none 
                                                 transition-all focus:border-fuchsia-300 
-                                                focus:outline-none focus:transition-shadow " wire:model="email"/>
+                                                focus:outline-none focus:transition-shadow "
+                                                    wire:model="email" />
+
+                                                @error('email')
+                                                    <p class="text-danger">{{ $message }}</p>
+                                                @enderror
+
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
-                                        <div class="mb-4">
-                                            <label for="apellido_paterno"
-                                                class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Apellido
-                                                paterno</label>
-                                            <input type="text" name="first apellido_paterno" value="Jesse"
-                                                class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full 
+                                        <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
+                                            <div class="mb-4">
+                                                <label for="apellido_paterno"
+                                                    class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Apellido
+                                                    paterno</label>
+                                                <input type="text" name="first apellido_paterno" value="Jesse"
+                                                    class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full 
                                                 appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal 
                                                 text-gray-700 outline-none transition-all focus:border-fuchsia-300 
                                                 focus:outline-none focus:transition-shadow "wire:model="apellido_paterno" />
+
+                                                @error('name')
+                                                    <p class="text-apellido_paterno">{{ $message }}</p>
+                                                @enderror
+
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
-                                        <div class="mb-4">
-                                            <label for="apellido_materno"
-                                                class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Apellido
-                                                materno</label>
-                                            <input type="text" name="apellido_materno" value="Lucky"
-                                                class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg 
+                                        <div class="w-full max-w-full px-3 shrink-0 md:w-6/12 md:flex-0">
+                                            <div class="mb-4">
+                                                <label for="apellido_materno"
+                                                    class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Apellido
+                                                    materno</label>
+                                                <input type="text" name="apellido_materno" value="Lucky"
+                                                    class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg 
                                                 border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all 
                                                 focus:border-fuchsia-300 
                                                 focus:outline-none focus:transition-shadow"wire:model="apellido_materno" />
+
+                                                @error('apellido_materno')
+                                                    <p class="text-danger">{{ $message }}</p>
+                                                @enderror
+
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <hr
-                                    class="h-px mx-0 my-4 bg-transparent border-0 opacity-25 bg-gradient-to-r from-transparent via-black/40 to-transparent dark:bg-gradient-to-r dark:from-transparent dark:via-white dark:to-transparent " />
+                                    <hr
+                                        class="h-px mx-0 my-4 bg-transparent border-0 opacity-25 bg-gradient-to-r from-transparent via-black/40 to-transparent dark:bg-gradient-to-r dark:from-transparent dark:via-white dark:to-transparent " />
 
-                                <p class="leading-normal uppercase dark:text-white dark:opacity-60 text-sm">Informacion
-                                    de Contacto</p>
-                                <div class="flex flex-wrap -mx-3">
-                                    <div class="w-full max-w-full px-3 shrink-0 md:w-full md:flex-0">
-                                        <div class="mb-4">
-                                            <label for="direccion"
-                                                class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Dirección</label>
-                                            <input type="text" name="direccion" value="Av. cañoto"
-                                                class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none
+                                    <p class="leading-normal uppercase dark:text-white dark:opacity-60 text-sm">
+                                        Informacion
+                                        de Contacto</p>
+                                    <div class="flex flex-wrap -mx-3">
+                                        <div class="w-full max-w-full px-3 shrink-0 md:w-full md:flex-0">
+                                            <div class="mb-4">
+                                                <label for="direccion"
+                                                    class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Dirección</label>
+                                                <input type="text" name="direccion" value="Av. cañoto"
+                                                    class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none
                                                  rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none 
                                                  transition-all focus:border-fuchsia-300 
-                                                 focus:outline-none focus:transition-shadow" wire:model="direccion"/>
+                                                 focus:outline-none focus:transition-shadow"
+                                                    wire:model="direccion" />
+
+                                                @error('direccion')
+                                                    <p class="text-danger">{{ $message }}</p>
+                                                @enderror
+
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="w-full max-w-full px-3 shrink-0 md:w-4/12 md:flex-0">
-                                        <div class="mb-4">
-                                            <label for="telefono"
-                                                class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Telefono</label>
-                                            <input type="number" name="telefono" value="0000000"
-                                                class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full 
+                                        <div class="w-full max-w-full px-3 shrink-0 md:w-4/12 md:flex-0">
+                                            <div class="mb-4">
+                                                <label for="telefono"
+                                                    class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Telefono</label>
+                                                <input type="number" name="telefono" value="0000000"
+                                                    class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full 
                                                 appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal 
                                                 text-gray-700 outline-none transition-all focus:border-fuchsia-300 
                                                 focus:outline-none focus:transition-shadow"wire:model="telefono" />
+
+                                                @error('telefono')
+                                                    <p class="text-danger">{{ $message }}</p>
+                                                @enderror
+
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="w-full max-w-full px-3 shrink-0 md:w-4/12 md:flex-0">
-                                        <div class="mb-4">
-                                            <label for="CI"
-                                                class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Carnet
-                                                de Identidad</label>
-                                            <input type="number" name="CI" value="000000"
-                                                class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full
+                                        <div class="w-full max-w-full px-3 shrink-0 md:w-4/12 md:flex-0">
+                                            <div class="mb-4">
+                                                <label for="CI"
+                                                    class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Carnet
+                                                    de Identidad</label>
+                                                <input type="number" name="CI" value="000000"
+                                                    class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full
                                                  appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal
                                                   text-gray-700 outline-none transition-all focus:border-fuchsia-300 
-                                                  focus:outline-none focus:transition-shadow" wire:model="CI"/>
+                                                  focus:outline-none focus:transition-shadow"
+                                                    wire:model="CI" />
+
+                                                @error('CI')
+                                                    <p class="text-danger">{{ $message }}</p>
+                                                @enderror
+
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="w-full max-w-full px-3 shrink-0 md:w-4/12 md:flex-0">
-                                        <div class="mb-4">
-                                            <label for="sueldo"
-                                                class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Sueldo</label>
-                                            <input type="number" name="sueldo" value="4370"
-                                                class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full 
+                                        <div class="w-full max-w-full px-3 shrink-0 md:w-4/12 md:flex-0">
+                                            <div class="mb-4">
+                                                <label for="sueldo"
+                                                    class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Sueldo</label>
+                                                <input type="number" name="sueldo" value="4370"
+                                                    class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full 
                                                 appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal
                                                 text-gray-700 outline-none transition-all focus:border-fuchsia-300 
-                                                focus:outline-none focus:transition-shadow" wire:model="sueldo"/>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr
-                                    class="h-px mx-0 my-4 bg-transparent border-0 opacity-25 bg-gradient-to-r from-transparent via-black/40 to-transparent dark:bg-gradient-to-r dark:from-transparent dark:via-white dark:to-transparent " />
+                                                focus:outline-none focus:transition-shadow"
+                                                    wire:model="sueldo" />
 
-                                <p class="leading-normal uppercase dark:text-white dark:opacity-60 text-sm">About me
-                                </p>
-                                <div class="flex flex-wrap -mx-3">
-                                    <div class="w-full max-w-full px-3 shrink-0 md:w-full md:flex-0">
-                                        <div class="mb-4">
-                                            <label for="about me"
-                                                class="inline-block mb-2 ml-1 font-bold text-xs text-slate-700 dark:text-white/80">Permisos</label>
-                                            <input type="text" name="about me"
-                                                value="A beautiful Dashboard for Bootstrap 5. It is Free and Open Source."
-                                                class="focus:shadow-primary-outline dark:bg-slate-850 dark:text-white text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none" />
+                                                @error('sueldo')
+                                                    <p class="text-danger">{{ $message }}</p>
+                                                @enderror
+
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                    <hr
+                                        class="h-px mx-0 my-4 bg-transparent border-0 opacity-25 bg-gradient-to-r from-transparent via-black/40 to-transparent dark:bg-gradient-to-r dark:from-transparent dark:via-white dark:to-transparent " />
+
+                                    <p class="leading-normal uppercase dark:text-white dark:opacity-60 text-sm">a puro
+                                        lapiz y papel
+                                    </p>
+                                    <a type="submit"
+                                        class="inline-block px-8 py-2 mb-0 mr-4 font-bold text-center uppercase align-middle transition-all bg-transparent 
+                                border border-solid rounded-lg shadow-none cursor-pointer leading-pro border-amber-600
+                                ease-soft-in text-xs hover:scale-102 active:shadow-soft-xs text-amber-600 hover:border-amber-600 active:bg-amber-600
+                                active:hover:text-amber-600 hover:text-amber-600 tracking-tight-soft hover:bg-transparent 
+                                hover:opacity-75 hover:shadow-none active:text-white active:hover:bg-transparent"
+                                        href="{{ route('empleado') }}">Registrar</a>
+                                    <button type="submit"
+                                        class="inline-block px-8 py-2 mb-0 mr-4 font-bold text-center uppercase align-middle transition-all bg-transparent 
+                                border border-solid rounded-lg shadow-none cursor-pointer leading-pro border-fuchsia-500 
+                                ease-soft-in text-xs hover:scale-102 active:shadow-soft-xs text-fuchsia-500 hover:border-fuchsia-500 active:bg-fuchsia-500
+                                active:hover:text-fuchsia-500 hover:text-fuchsia-500 tracking-tight-soft hover:bg-transparent 
+                                hover:opacity-75 hover:shadow-none active:text-white active:hover:bg-transparent">Registrar</button>
+
+
+                                </form>
                             </div>
 
 
